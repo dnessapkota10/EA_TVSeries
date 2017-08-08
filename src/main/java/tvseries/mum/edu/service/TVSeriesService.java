@@ -39,11 +39,38 @@ public class TVSeriesService implements ITVSeriesService {
 		// TODO Auto-generated method stub
 		seriesDao.save(series);
 	}
-	
+
 	@Override
 	public void updateSeries(Series series) {
 		// TODO Auto-generated method stub
 		seriesDao.save(series);
+	}
+
+	
+	@Override
+	public void addSeason(Season season, int seriesId) {
+		// TODO Auto-generated method stub
+		season.setSeries(this.getSeriesById(seriesId));
+		seasonDao.save(season);
+	}
+
+	@Override
+	public List<Season> getAllSeasonBySeriesId(Integer seriesId) {
+		// TODO Auto-generated method stub
+
+		return seasonDao.findBySeriesId(seriesId.longValue());
+	}
+
+	@Override
+	public Season getSeasonById(int id) {
+		// TODO Auto-generated method stub
+		return seasonDao.findOne((long)id);
+	}
+
+	@Override
+	public void updateSeason(Season season) {
+		// TODO Auto-generated method stub
+		seasonDao.save(season);
 	}
 
 	@Override
@@ -52,12 +79,18 @@ public class TVSeriesService implements ITVSeriesService {
 		return null;
 	}
 
+	
 	@Override
-	public void addSeason(Season season) {
+	public int getRecentSessonIdBySeries(int seriesId) {
 		// TODO Auto-generated method stub
-		seasonDao.save(season);
+		List<Season> seasons = seasonDao.findBySeasonNumberOrderBySeasonNumberDesc(0);
+		return 0;
 	}
 
-
+	@Override
+	public List<Episode> getAllEpisodeBySeasonId(int seasonId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

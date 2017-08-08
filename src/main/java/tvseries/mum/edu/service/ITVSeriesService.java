@@ -13,6 +13,15 @@ public interface ITVSeriesService {
 	public void addSeries(Series series);
 	public void updateSeries(Series series);
 	
+	public List<Season>getAllSeasonBySeriesId(Integer seriesId);
+	public int getRecentSessonIdBySeries(int seriesId);
+	
+	
 	public List<Episode> getEpisodeBySeason();
-	public void addSeason(Season season);
+	public void addSeason(Season season, int serisId);
+	public Season getSeasonById(int id);
+	public void updateSeason(Season season);
+	
+	
+	public List<Episode> getAllEpisodeBySeasonId(int seasonId);
 }

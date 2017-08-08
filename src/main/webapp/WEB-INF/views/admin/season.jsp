@@ -12,35 +12,27 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Episodes: "${series.name}" Season: "${season.seasonNumber}" </h1>
-		<h4>EPISODES</h4>
+		<h1>List of Season: "${series.name}" </h1>
 		<br /> <a href="/Season/addSeason/${series.id}"> Add Season</a>
 		<hr />
 
 		<div class="container">
 			<table class="table table-striped .table-hover">
 			<tr class="info">
-			<td>Episode Number</td>
-			<td>Name</td>
-			<td>Description</td>
-			<td>Rating</td>
-			<td>Release Date</td>
+			<td>Season Number</td>
 			<td>Poster</td>
-			<td>Director</td>
+			<td>Release Date</td>
+			<td>Action</td>
 			</tr>
-				<c:forEach var="episode" items="${episodes}">
+				<c:forEach var="season" items="${seasons}">
 					<tr>
-						<td>${episode.episodeNumber}</td>
-						<td>${episode.name}</td>
-						<td>${episode.description}</td>
-						<td>${episode.rating}</td>						
-						<td>${episode.releaseDate}</td>
-						<td>${episode.poster}</td>
-						<td>${episode.director}</td>
+						<td><a href="showEpisode/${season.id}/">${season.seasonNumber}</td>
+						<td>${season.poster}</td>
+						<td>${season.releaseDate}</td>
 						<td><p data-placement="top" data-toggle="tooltip"
 								title="Edit">
 								<a class="btn btn-warning btn-xs"
-									href="/Episode/editEpisode/${episode.id}"><span
+									href="/Season/editSeason/${season.id}"><span
 									class="glyphicon glyphicon-pencil"></span> </a>
 							</p></td>
 					</tr>

@@ -17,6 +17,14 @@
 		<hr />
 
 		<table class="table table-striped .table-hover">
+			<tr class="info">
+				<td>NAME</td>
+				<td>DESCRIPTION</td>
+				<td>RATING</td>
+				<td>RElEASE</td>
+				<td>STUDIO</td>
+				<td>ACTION</td>
+			</tr>
 			<c:forEach var="series" items="${tvseries}">
 				<tr>
 					<td><a href="showSeason/${series.id}/">${series.name}</a></td>
@@ -24,9 +32,8 @@
 					<td>${series.rating}</td>
 					<td>${series.releaseDate}</td>
 					<td>${series.studio}</td>
-					<td>
-					<td><p data-placement="top" data-toggle="tooltip"
-							title="Edit">
+					
+					<td><p data-placement="top" data-toggle="tooltip" title="Edit">
 							<a class="btn btn-warning btn-xs"
 								href="/Series/editSeries/${series.id}"><span
 								class="glyphicon glyphicon-pencil"></span> </a>

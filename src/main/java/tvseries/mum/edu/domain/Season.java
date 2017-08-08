@@ -1,5 +1,6 @@
 package tvseries.mum.edu.domain;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Season {
@@ -25,6 +28,12 @@ public class Season {
 	@OneToMany(mappedBy="season")
 	private List<Episode> episodeList;
 
+	@Column(columnDefinition = "mediumblob")
+	private Byte[] poster;
+	
+	@Temporal(TemporalType.DATE)
+	private Date releaseDate;
+	
 	@ManyToOne
 	@JoinColumn(name="seriesId")
 	private Series series;
@@ -48,6 +57,12 @@ public class Season {
 		return episodeList;
 	}
 
+	public Byte[] getPoster() {
+		return poster;
+	}
+	public void setPoster(Byte[] poster) {
+		this.poster = poster;
+	}
 	public void setEpisodeList(List<Episode> episodeList) {
 		this.episodeList = episodeList;
 	}
@@ -56,6 +71,12 @@ public class Season {
 	}
 	public void setSeries(Series series) {
 		this.series = series;
+	}
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	
 }
