@@ -28,6 +28,7 @@
 			<td>Release Date</td>
 			<td>Poster</td>
 			<td>Director</td>
+			<td>Action</td>
 			</tr>
 				<c:forEach var="episode" items="${episodes}">
 					<tr>

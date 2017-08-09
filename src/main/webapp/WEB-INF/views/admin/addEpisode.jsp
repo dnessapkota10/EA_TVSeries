@@ -14,7 +14,7 @@
 	<div class="container">
 		<h3>Add a episode: ${series.name} Season: ${season.seasonNumber}</h3>
 		<hr />
-		<form action="/Season/addNewEpisode/${season.id}"
+		<form action="/Episode/addNewEpisode/${season.id}"
 			method="post">
 			<table>
 				<tr>

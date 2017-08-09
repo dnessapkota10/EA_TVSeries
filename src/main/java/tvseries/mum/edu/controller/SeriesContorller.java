@@ -27,6 +27,11 @@ public class SeriesContorller {
 	@Autowired
 	ITVSeriesService tvSeriesService;
 
+	/*@RequestMapping("/")
+	public String Login(){
+		return "/login";
+	}*/
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("tvseries", tvSeriesService.getAllSeries());
@@ -41,7 +46,7 @@ public class SeriesContorller {
 	@RequestMapping(value = "/addNewSeries", method = RequestMethod.POST)
 	public String addSeries(@ModelAttribute("series") Series series) {
 		tvSeriesService.addSeries(series);
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	// Open Update form
@@ -66,7 +71,7 @@ public class SeriesContorller {
 
 		model.addAttribute("seasons", tvSeriesService.getAllSeasonBySeriesId(id));
 		model.addAttribute("series", tvSeriesService.getSeriesById(id));
-		request.setAttribute("series", tvSeriesService.getSeriesById(id));
+		request.getSession().setAttribute("series", tvSeriesService.getSeriesById(id));
 
 		return "admin/season";
 	}
@@ -112,11 +117,11 @@ public class SeriesContorller {
 	public String showEpisode(HttpServletRequest request, Model model, @PathVariable int id) {
 
 		model.addAttribute("episodes", tvSeriesService.getAllEpisodeBySeason(id));
-		model.addAttribute("series", request.getAttribute("series"));
+		model.addAttribute("series", request.getSession().getAttribute("series"));
 		model.addAttribute("season", tvSeriesService.getSeasonById(id));
 
-		request.setAttribute("season", tvSeriesService.getSeasonById(id));
-		System.out.println("HEHRE" + request.getAttribute("series"));
+		request.getSession().setAttribute("season", tvSeriesService.getSeasonById(id));
+		System.out.println("HEHRE" + request.getSession().getAttribute("series"));
 		return "admin/episode";
 	}
 
