@@ -6,13 +6,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TV Series</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/bootstrap-min.js" type="text/javascript"></script>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/tvseries.css" />
 </head>
 <body>
+	
 	<div class="container">
-		<h1>List of TV Series</h1>
+		
+			<form class="form-horizontal" action="/Search">
+		<div class="search_by">
+			<div class="search-field">
+				<label>Search By</label> <select class="form-control selectpicker"
+					name="searchBy">
+					
+					<option value="ByName">Show Name</option>
+					<option value="ByGenre">Genre</option>
+					<option value="ByRating">Rating</option>
+					<option value="ByArtist">Artist</option>
+					<option value="ByCharacter">Character</option>
+					<option value="ByDirector">Director</option>
+				</select>
+
+			</div>
+			<div class="search-field">
+				<label>Keyword</label> <input type="text"
+					placeholder="Please enter "
+					class="form-control search_by_keyword" name="searchValue">
+			</div>
+		</div>
+</form>
+		<h4>Popular TV Series</h4>
 		<br /> <a href="/html/addSeries.html"> Add a Series</a>
 		<hr />
 
@@ -32,7 +60,7 @@
 					<td>${series.rating}</td>
 					<td>${series.releaseDate}</td>
 					<td>${series.studio}</td>
-					
+
 					<td><p data-placement="top" data-toggle="tooltip" title="Edit">
 							<a class="btn btn-warning btn-xs"
 								href="/Series/editSeries/${series.id}"><span

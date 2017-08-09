@@ -12,21 +12,22 @@
 </head>
 <body>
 	<div class="container">
-		<h1>List of Season: "${series.name}" </h1>
+		<h1>List of Season: "${series.name}"</h1>
 		<br /> <a href="/Season/addSeason/${series.id}"> Add Season</a>
 		<hr />
 
 		<div class="container">
 			<table class="table table-striped .table-hover">
-			<tr class="info">
-			<td>Season Number</td>
-			<td>Poster</td>
-			<td>Release Date</td>
-			<td>Action</td>
-			</tr>
+				<tr class="info">
+					<td>Season Number</td>
+					<td>Poster</td>
+					<td>Release Date</td>
+					<td>Action</td>
+				</tr>
 				<c:forEach var="season" items="${seasons}">
 					<tr>
-						<td><a href="showEpisode/${season.id}/">${season.seasonNumber}</td>
+						<td><a href="/showEpisode/${season.id}/">${season.seasonNumber}</a></td>
+
 						<td>${season.poster}</td>
 						<td>${season.releaseDate}</td>
 						<td><p data-placement="top" data-toggle="tooltip"

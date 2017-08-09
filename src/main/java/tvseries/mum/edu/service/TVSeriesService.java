@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tvseries.mum.edu.dao.EpisodeDao;
 import tvseries.mum.edu.dao.SeasonDao;
 import tvseries.mum.edu.dao.SeriesDao;
 import tvseries.mum.edu.domain.Episode;
@@ -21,6 +22,9 @@ public class TVSeriesService implements ITVSeriesService {
 
 	@Autowired
 	private SeasonDao seasonDao;
+	
+	@Autowired
+	private EpisodeDao episodeDao;
 
 	@Override
 	public Series getSeriesById(int id) {
@@ -79,18 +83,31 @@ public class TVSeriesService implements ITVSeriesService {
 		return null;
 	}
 
-	
 	@Override
-	public int getRecentSessonIdBySeries(int seriesId) {
+	public List<Episode> getAllEpisodeBySeason(int seasonId) {
 		// TODO Auto-generated method stub
-		List<Season> seasons = seasonDao.findBySeasonNumberOrderBySeasonNumberDesc(0);
-		return 0;
+		
+		return episodeDao.findBySeasonId((long)seasonId);		
 	}
 
 	@Override
-	public List<Episode> getAllEpisodeBySeasonId(int seasonId) {
+	public void addEpisode(Episode episode, int seasonId) {
 		// TODO Auto-generated method stub
-		return null;
+		episode.setSeason(this.getSeasonById(seasonId));
+		episodeDao.save(episode);
+	}
+
+	@Override
+	public List<Series> getAllSeriesByName(String seriesName) {
+		// TODO Auto-generated method stub
+		
+		return seriesDao.findByName(seriesName);
+	}
+
+	@Override
+	public List<Series> getAllSeriesByRating(double seriesRating) {
+		// TODO Auto-generated method stub
+		return seriesDao.findByRating(seriesRating);
 	}
 
 }

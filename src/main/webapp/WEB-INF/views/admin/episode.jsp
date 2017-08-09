@@ -12,9 +12,10 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Episodes: "${series.name}" Season: "${season.seasonNumber}" </h1>
+		
 		<h4>EPISODES</h4>
-		<br /> <a href="/Season/addSeason/${series.id}"> Add Season</a>
+		<h5>Series: ${series.name} Season: ${season.seasonNumber} </h5>
+		<br /> <a href="/Episode/addEpisode/${season.id}"> Add Episode</a>
 		<hr />
 
 		<div class="container">

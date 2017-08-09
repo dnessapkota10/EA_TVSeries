@@ -14,14 +14,17 @@ public interface ITVSeriesService {
 	public void updateSeries(Series series);
 	
 	public List<Season>getAllSeasonBySeriesId(Integer seriesId);
-	public int getRecentSessonIdBySeries(int seriesId);
-	
-	
+		
 	public List<Episode> getEpisodeBySeason();
 	public void addSeason(Season season, int serisId);
 	public Season getSeasonById(int id);
-	public void updateSeason(Season season);
+	public void updateSeason(Season season);	
 	
+	public List<Episode> getAllEpisodeBySeason(int seasonId);
+	public void addEpisode(Episode episode, int seasonId);
 	
-	public List<Episode> getAllEpisodeBySeasonId(int seasonId);
+	//Search
+	public List<Series> getAllSeriesByName(String seriesName);
+	public List<Series> getAllSeriesByRating(double seriesRating);
+	
 }
